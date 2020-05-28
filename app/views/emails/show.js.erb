@@ -1,0 +1,19 @@
+var emailShow = document.getElementById("email-show");
+var email = document.getElementById("<%= @email.id %>");
+emailShow.addEventListener('click', fonctionEmailShow());
+
+function fonctionEmailShow(){
+  if (emailShow.childNodes.length > 2){
+  emailShow.removeChild(emailShow.childNodes[2]);
+  emailShow.insertAdjacentHTML("beforeend", "<%= j render 'show', email: @email %>")
+  }
+  else{
+    emailShow.insertAdjacentHTML("beforeend", "<%= j render 'show', email: @email %>")
+  }
+
+  var change = ("<%= @email.read  %>")
+  if (change === "false") {
+    ("<%= @email.update_attribute(:read, "true") %>")
+    email.classList.add("bg-light")
+  }
+}

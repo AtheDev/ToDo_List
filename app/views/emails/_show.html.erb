@@ -1,0 +1,12 @@
+<li class="list-group-item" id="<%= email.object  %>">
+  <div class="container text-center">
+    <h1><%= @email.object %></h1>
+    <p><%= @email.body %></p>
+    <%= link_to "Supprimer",email_path(email.id), :method => :delete, class: "btn btn-secondary btn-lg active", remote: true %>
+    <% if @email.read? %>
+      <%= link_to "Marquer comme non-lu",email_path(email.id), :method => :put, class: "btn btn-primary btn-lg active change-status", remote: true %>
+    <% else %>
+      <%= link_to "Marquer comme lu",email_path(email.id), :method => :put, class: "btn btn-primary btn-lg active change-status", remote: true %>
+      <% end %>
+  </div>
+</li>
